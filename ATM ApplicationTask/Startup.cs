@@ -17,16 +17,28 @@ namespace ATM_ApplicationTask
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            //nnectionString = Configuration.GetConnectionString("ATMDbConnection");
         }
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwaggerGen();
             services.AddControllers();
             // connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ATMDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ATMDbConnection")));
+         //   services.AddScoped<CustomerService>();
         }
 
+        public void Configure(IApplicationBuilder app)
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "ATM API V1");
+            });
+            // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+            //AppDbInitializer.Seed(app);
+
+        }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

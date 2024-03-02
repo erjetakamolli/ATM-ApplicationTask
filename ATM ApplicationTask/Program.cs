@@ -1,5 +1,6 @@
 using ATM_AplicationTask.Data;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,13 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddControllers()
-    .AddJsonOptions(options =>
-    {
-        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
-    });
-builder.Services.AddDbContext<ATMDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("ATMDbConnection")));
+
+builder.Services.AddDbContext<ATMDbContext>(options => options.UseSqlServer("Data Source=DESKTOP-NKV6MM8;Initial Catalog=ATMDatabase;Integrated Security=True;Encrypt=True;Trust Server Certificate=True"));
+builder.Services.AddDbContext<ATMDbContext>
+  (options => options.UseSqlServer(builder.Configuration.GetConnectionString("ATMDbConnection")));
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
