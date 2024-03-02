@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using ATM_AplicationTask.Data;
 
 namespace ATM_ApplicationTask.Models
 {
@@ -29,8 +30,14 @@ namespace ATM_ApplicationTask.Models
             Email = email;
             Gender = gender;
             PhoneNumber = phoneNumber;
-            Accounts = new List<Account>();
+           // Accounts = new List<Account>();
         }
+
+        public Customer()
+        {
+            Accounts = new List<Account>(); // Inicializimi i listës së llogarive në konstruktor
+        }
+
         public void AddAccount(Account account)
         {
             Accounts.Add(account);

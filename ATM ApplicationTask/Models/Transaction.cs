@@ -13,7 +13,7 @@ namespace ATM_ApplicationTask.Models
         public TranStatus TransactionStatus { get; set; } //tregon nese transaksioni eshte kryer me sukses apo ka deshtuar
         public bool IsSuccessful => TransactionStatus.Equals(TranStatus.Succes); //varet nga vlera e statusit
         public string TransactionSourceAccount { get; set; } //llogaria qe ka kryer transaksionin
-        public string TransactionDestinationAccount { get; set; }
+        //public string TransactionDestinationAccount { get; set; }
         public TranType TransactionType { get; set; } // lloji i transaksionit qe do te kryhet
 
         public DateTime TransactionDate { get; set; }
