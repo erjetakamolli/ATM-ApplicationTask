@@ -24,7 +24,7 @@ namespace ATM_ApplicationTask
             services.AddSwaggerGen();
             services.AddControllers();
             // connectionString = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<ATMDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ATMDbConnection")));
+            services.AddDbContext<ATMDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
          //   services.AddScoped<CustomerService>();
         }
 
