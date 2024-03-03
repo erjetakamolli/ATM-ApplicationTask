@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<ATMDbContext>(options => options.UseSqlServer("Data Source=DESKTOP-NKV6MM8;Initial Catalog=ATMDatabase;Integrated Security=True;Encrypt=True;Trust Server Certificate=True"));
 builder.Services.AddDbContext<ATMDbContext>
-  (options => options.UseSqlServer(builder.Configuration.GetConnectionString("ATMDbConnection")));
+  (options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
